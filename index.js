@@ -1,7 +1,7 @@
-
 require('dotenv/config');
 const { Client, IntentsBitField } = require('discord.js');
 const { Configuration, OpenAIApi } = require('openai');
+const info = '>>> - Howdy, I am **Hiro** the AI chatbot. \n- I am powered by **OpenAI** and **Discord.js** \n- **OpenAI Model** : ||*gpt-3.5-turbo*|| \n- **Discord.js** : ||*14.12.1*|| \n- I was created by **@akai4322**  \n- I am currently in beta so please be patient with me. \n- If you have any questions or concerns please send your https://discord.com/channels/1142447181597528154/1142448377502642216 here. \n- Thank you for using me!';
 
 const client = new Client({
   intents: [
@@ -9,6 +9,19 @@ const client = new Client({
     IntentsBitField.Flags.GuildMessages,
     IntentsBitField.Flags.MessageContent,
   ],
+});
+
+
+client.on('interactionCreate', (interaction) => {
+  if ( interaction.isChatInputCommand() ) {
+    if ( interaction.commandName === 'ping' ) {
+      interaction.reply('Pong!');
+    };
+
+    if ( interaction.commandName === 'info' ) {
+      interaction.reply(info);
+    };
+  }
 });
 
 client.on('ready', () => {

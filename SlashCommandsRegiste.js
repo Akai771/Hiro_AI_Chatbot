@@ -3,13 +3,16 @@ const { REST, Routes} = require('discord.js');
 
 const commands=[
     {
-        name: 'ping',
-        description: 'Replies with Pong!',
+        name: 'info',
+        description: 'Get information about the bot',
     },
+    {
+        name: 'ping',
+        description: 'pong!',
+    }
 ];
 
 const rest = new REST({ version: '10'}).setToken(process.env.TOKEN);
-
 (async () => {
     try {
         console.log('Registering Slash Commands...');
