@@ -3,31 +3,6 @@ require('dotenv/config');
 const { Client, IntentsBitField } = require('discord.js');
 const { Configuration, OpenAIApi } = require('openai');
 
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
-module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('delete')
-        .setDescription('Delete a message')
-        .addIntegerOption(option =>
-            option.setName('amount')
-                .setDescription('The amount of messages to delete')
-                .setRequired(true)),
-    async execute(interaction) {
-        const amount = interaction.options.getInteger('amount');
-        const channel = interaction.channel;
-        const messages = await channel.messages.fetch({ limit: amount });
-        await channel.bulkDelete(messages);
-        const embed = new MessageEmbed()
-            .setColor('#0099ff')
-            .setTitle('Messages deleted')
-            .setDescription(`Deleted ${amount} messages from ${channel}`);
-        await interaction.reply({ embeds: [embed] });
-    },
-};
-
-
-
 const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
