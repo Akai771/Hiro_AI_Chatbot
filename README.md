@@ -30,7 +30,7 @@ To get started, you will need to:
 ## Usage
 - To use **Hiro**, simply type a message in the chat and the bot will respond. You can also use the following commands:
 
-- `!info`: This will display information about Hiro, such as its version number and the API key that it is using.
+- `!info`: This will display information about Hiro, such as its version number and the OpenAI model that it is using.
 
 ## Contributions
 **Hiro** is an open-source project and contributions are welcome. If you want to contribute, please fork the repository and submit a pull request.
