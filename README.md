@@ -21,12 +21,18 @@ To get started, you will need to:
 - Add the bot to your Discord server.
 - Configure the bot to use the OpenAI API.
 
+## Requirements
+- Node.js
+- Discord.js
+- OpenAI API
+- Discord
+
 ## Usage
 - To use **Hiro**, simply type a message in the chat and the bot will respond. You can also use the following commands:
 
 - `!info`: This will display information about Hiro, such as its version number and the API key that it is using.
 
-## Contributing
+## Contributions
 **Hiro** is an open-source project and contributions are welcome. If you want to contribute, please fork the repository and submit a pull request.
 
 ## License
