@@ -15,9 +15,10 @@ Hiro is an AI chatbot built using discord.js and OpenAI API. It can be used to:
 To get started, you will need to:
 
 - Create a Discord server.
-- Install the discord.js library.
+- Install [node.js](https://nodejs.org/en).
+- Install the [discord.js](https://discord.js.org/) library.
 - Get an OpenAI API key.
-- Create a bot account on Discord.
+- Create a bot account on [Discord Developers Portal](https://discord.com/developers/applications).
 - Add the bot to your Discord server.
 - Configure the bot to use the OpenAI API.
 
