@@ -2,8 +2,31 @@
 require('dotenv/config');
 const { Client, IntentsBitField } = require('discord.js');
 const { Configuration, OpenAIApi } = require('openai');
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { EmbedBuilder, PermissionsBitField } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('delete')
+        .setDescription('Delete a message')
+        .addIntegerOption(option =>
+            option.setName('amount')
+                .setDescription('The amount of messages to delete')
+                .setRequired(true)),
+    async execute(interaction) {
+        const amount = interaction.options.getInteger('amount');
+        const channel = interaction.channel;
+        const messages = await channel.messages.fetch({ limit: amount });
+        await channel.bulkDelete(messages);
+        const embed = new MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle('Messages deleted')
+            .setDescription(`Deleted ${amount} messages from ${channel}`);
+        await interaction.reply({ embeds: [embed] });
+    },
+};
+
+
 
 const client = new Client({
   intents: [
@@ -13,35 +36,17 @@ const client = new Client({
   ],
 });
 
-
 client.on('ready', () => {
   console.log('The bot is online!');
 });
 
-module.exports = {
-    data: new SlashCommandBuilder()
-    .setName('clear')
-    .setDescription('Deletes messages')
-    .addIntegerOption(option => option.setName('amount').setDescription('Amount of messages to delete')),
-    async execute(interaction, client) {
-        const amount = interaction.options.getInteger('amount');
-        const channel = interaction.channel;
-
-        if (!interaction.member.permissions.has(PermissionsBitField.ManageMessages)) return await interaction.reply({content: 'You do not have permissions to use this command!', ephemeral: true});
-        if (!amount) return await interaction.reply({content: 'You need to specify an amount of messages to delete!', ephemeral: true});
-        if (amoutn > 100 || amount < 1) return await interaction.reply({content: 'The amount of messages to delete must be between 1 and 100!', ephemeral: true});
-        await interaction.channel.bulkDelete(amount).catch(err => {
-            return;
-        });
-        const embed = new EmbedBuilder()
-        .setColor("Blue")
-        .setDescription(`:white_check_mark: Deleted **${amount}** messages.`)
-
-        await interaction.reply({embeds: [embed]}).catch(err => {
-            return;
-        });
-    }
-};
+client.on('interactionCreate', async (interaction) => {
+  if (!interaction.isChatInputCommand()) return;
+  
+  if (interaction.commandName === 'clear') {
+    await interaction.reply('Deleting messages....');
+  }
+});
 
 const configuration = new Configuration({
   apiKey: process.env.API_KEY,
@@ -55,7 +60,7 @@ client.on('messageCreate', async (message) => {
   if (message.content.startsWith('!')) return;
 
   let conversationLog = [
-    { role: 'system', content: 'You are a friendly chatbot.' },
+    { role: 'system', content: 'You are a AI chatbot.' },
   ];
 
   try {
@@ -91,7 +96,6 @@ client.on('messageCreate', async (message) => {
       .createChatCompletion({
         model: 'gpt-3.5-turbo',
         messages: conversationLog,
-        // max_tokens: 256, // limit token usage
       })
       .catch((error) => {
         console.log(`OPENAI ERR: ${error}`);
