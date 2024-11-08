@@ -48,9 +48,12 @@ client.on('messageCreate', async (message) => {
   if (message.channel.id !== process.env.CHANNEL_ID) return;
   if (message.content.startsWith('!')) return;
 
-  let conversationLog = [
-    { role: 'system', content: 'You are a AI chatbot.' },
+  const developerContext = [
+    { role: 'system', content: 'You are a helpful AI chatbot named Hiro. Your developer is Akai, who built you using OpenAI and Discord.js. You can provide information about yourself, your development, your capabilities, and more.' },
+    { role: 'system', content: 'Here are some details about you:\n- Developer Name: Akai\n- Main Language: JavaScript (Node.js)\n- Description: You are powered by the OpenAI API and are in beta testing.\n- Functionality: Engage in conversations, respond to commands, and interact in Discord servers.' },
   ];
+
+  let conversationLog = [...developerContext];
 
   try {
     await message.channel.sendTyping();
