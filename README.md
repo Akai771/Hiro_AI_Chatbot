@@ -1,40 +1,87 @@
-# Hiro the AI Chatbot
-Hiro is an AI chatbot built using discord.js and OpenAI API. It can be used to:
+<div align="center">
 
-- Answer your questions in an informative way, even if they are open-ended, challenging, or strange.
-- Generate different creative text formats of text content, like poems, code, scripts, musical pieces, emails, letters, etc.
-- Translate languages.
-- Write different kinds of creative content.
+# Hiro
 
-## Features
-- Uses the OpenAI API to access a large language model, which allows it to generate text, translate languages, write different kinds of creative content, and answer your questions in an informative way.
-- Can be used in any Discord server.
-- Is easy to set up and use.
+**An AI chatbot for your Discord server.**
+
+Hiro runs on discord.js and OpenAI — answer questions, generate creative content, translate languages, and more, right inside any Discord server.
+
+![Node.js](https://img.shields.io/badge/Node.js-Runtime-339933?style=flat-square&logo=nodedotjs)
+![Discord.js](https://img.shields.io/badge/Discord.js-Bot_Framework-5865F2?style=flat-square&logo=discord)
+![OpenAI](https://img.shields.io/badge/OpenAI-LLM-412991?style=flat-square&logo=openai)
+
+</div>
+
+---
+
+## What Hiro can do
+
+- Answer questions — open-ended, challenging, or strange
+- Generate creative content — poems, code, scripts, emails, musical pieces
+- Translate languages
+- Write in different tones and formats on demand
+
+---
+
+## Tech Stack
+
+| | |
+|---|---|
+| Runtime | Node.js |
+| Bot Framework | discord.js |
+| AI | OpenAI API |
+
+---
 
 ## Getting Started
-To get started, you will need to:
 
-- Create a Discord server.
-- Install [node.js](https://nodejs.org/en).
-- Install the [discord.js](https://discord.js.org/) library.
-- Get an OpenAI API key.
-- Create a bot account on [Discord Developers Portal](https://discord.com/developers/applications).
-- Add the bot to your Discord server.
-- Configure the bot to use the OpenAI API.
+### Prerequisites
 
-## Requirements
-- Node.js
-- Discord.js
-- OpenAI API
-- Discord
+- Node.js installed
+- OpenAI API key
+- Discord bot account — [create one here](https://discord.com/developers/applications)
 
-## Usage
-- To use **Hiro**, simply type a message in the chat and the bot will respond. You can also use the following commands:
+### Setup
 
-- `!info`: This will display information about Hiro, such as its version number and the OpenAI model that it is using.
+```bash
+# Clone the repo
+git clone https://github.com/Akai771/hiro-bot.git
+cd hiro-bot
 
-## Contributions
-**Hiro** is an open-source project and contributions are welcome. If you want to contribute, please fork the repository and submit a pull request.
+# Install dependencies
+npm install
+
+# Configure environment variables
+# → Add Discord bot token and OpenAI API key to .env
+
+# Start the bot
+node index.js
+```
+
+Add the bot to your Discord server via the OAuth2 URL from the Developer Portal.
+
+---
+
+## Commands
+
+| Command | Description |
+|---|---|
+| `!info` | Show Hiro's version and current OpenAI model |
+
+---
+
+## Contributing
+
+Open-source — contributions welcome. Fork the repo and submit a pull request.
+
+---
 
 ## License
-**Hiro** is licensed under the MIT License.
+
+MIT
+
+---
+
+<div align="center">
+  <sub>Built by <a href="https://github.com/Akai771">Akai</a></sub>
+</div>
